@@ -49,4 +49,28 @@ public class Body {
 		double force = this.calcForceExertedBy(b);
 		return (dist_y / dist) * force;
 	}
+
+	public double calcNetForceExertedByX(Body[] array_b) {
+		double force = 0.0;
+
+		for (Body b : array_b) {
+			if (!this.equals(b)) {
+				force += this.calcForceExertedByX(b);
+			}
+		}
+
+		return force;
+	}
+
+	public double calcNetForceExertedByY(Body[] array_b) {
+		double force = 0.0;
+
+		for (Body b : array_b) {
+			if (!this.equals(b)) {
+				force += this.calcForceExertedByY(b);
+			}
+		}
+
+		return force;
+	}
 }
