@@ -30,6 +30,7 @@ public class StdDrawDemo {
 
 		/* Stamps three copies of advice.png in a triangular pattern. */
 		StdDraw.picture(0, 75, imageToDraw);
+		StdDraw.picture(0, 0, imageToDraw);
 		StdDraw.picture(-75, -75, imageToDraw);
 		StdDraw.picture(75, -75, imageToDraw);
 

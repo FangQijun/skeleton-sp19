@@ -6,7 +6,7 @@ public class Body {
 	public double xxVel;
 	public double yyVel;
 	public double mass;
-	String imgFileName;
+	public String imgFileName;
 
 	public Body(double xP, double yP, double xV, double yV, double m, String img) {
 		this.xxPos = xP;
@@ -83,5 +83,14 @@ public class Body {
 		this.yyVel += dVelocityY;
 		this.xxPos += this.xxVel * duration;
 		this.yyPos += this.yyVel * duration;
+	}
+
+	public void draw() {
+		// StdDraw.enableDoubleBuffering();
+		// StdDraw.setScale(-radius, radius);
+		// StdDraw.clear();
+		// StdDraw.picture(this.xxPos / radius, this.yyPos / radius, this.imgFileName);
+		// StdDraw.picture(0.0, 0.0, "images/" + this.imgFileName);
+		StdDraw.picture(this.xxPos, this.yyPos, "images/" + this.imgFileName);
 	}
 }
