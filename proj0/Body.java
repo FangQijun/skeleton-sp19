@@ -38,22 +38,22 @@ public class Body {
 
 	public double calcForceExertedByX(Body b) {
 		double dist = this.calcDistance(b);
-		double dist_x = b.xxPos - this.xxPos;
+		double distX = b.xxPos - this.xxPos;
 		double force = this.calcForceExertedBy(b);
-		return (dist_x / dist) * force;
+		return (distX / dist) * force;
 	}
 
 	public double calcForceExertedByY(Body b) {
 		double dist = this.calcDistance(b);
-		double dist_y = b.yyPos - this.yyPos;
+		double distY = b.yyPos - this.yyPos;
 		double force = this.calcForceExertedBy(b);
-		return (dist_y / dist) * force;
+		return (distY / dist) * force;
 	}
 
-	public double calcNetForceExertedByX(Body[] array_b) {
+	public double calcNetForceExertedByX(Body[] bodyArray) {
 		double force = 0.0;
 
-		for (Body b : array_b) {
+		for (Body b : bodyArray) {
 			if (!this.equals(b)) {
 				force += this.calcForceExertedByX(b);
 			}
@@ -62,15 +62,26 @@ public class Body {
 		return force;
 	}
 
-	public double calcNetForceExertedByY(Body[] array_b) {
+	public double calcNetForceExertedByY(Body[] bodyArray) {
 		double force = 0.0;
 
-		for (Body b : array_b) {
+		for (Body b : bodyArray) {
 			if (!this.equals(b)) {
 				force += this.calcForceExertedByY(b);
 			}
 		}
 
 		return force;
+	}
+
+	public void update(double duration, double forceX, double forceY) {
+		double accelarationX = forceX / this.mass;
+		double accelarationY = forceY / this.mass;
+		double dVelocityX = accelarationX * duration;
+		double dVelocityY = accelarationY * duration;
+		this.xxVel += dVelocityX;
+		this.yyVel += dVelocityY;
+		this.xxPos += this.xxVel * duration;
+		this.yyPos += this.yyVel * duration;
 	}
 }
