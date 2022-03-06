@@ -51,6 +51,9 @@ public class TestCalcForceExertedByXY {
      */
     private static void checkCalcForceExertedByXY() {
         System.out.println("Checking calcForceExertedByX and calcForceExertedByY...");
+        Body samh = new Body(1.0, 0.0, 3.0, 4.0, 10.0, "jupiter.gif");
+        Body rocinante = new Body(5.0, -3.0, 3.0, 4.0, 50.0, "jupiter.gif");
+        System.out.println(samh.calcForceExertedByX(rocinante));
 
         Body b1 = new Body(1.0, 1.0, 3.0, 4.0, 5.0, "jupiter.gif");
         Body b2 = new Body(2.0, 1.0, 3.0, 4.0, 4e11, "jupiter.gif");
