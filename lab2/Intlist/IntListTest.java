@@ -55,6 +55,24 @@ public class IntListTest {
         IntList exp = IntList.of(1, 2, 3, 4, 5, 6);
         assertEquals(exp, IntList.dcatenate(A, B));
         assertEquals(IntList.of(1, 2, 3, 4, 5, 6), A);
+
+        IntList C = IntList.of(1, 2, 3);
+        IntList D = IntList.of();
+        IntList exp2 = IntList.of(1, 2, 3);
+        assertEquals(exp2, IntList.dcatenate(C, D));
+        assertEquals(IntList.of(1, 2, 3), C);
+
+        IntList E = IntList.of();
+        IntList F = IntList.of(4, 5, 6);
+        IntList exp3 = IntList.of(4, 5, 6);
+        assertEquals(exp3, IntList.dcatenate(E, F));
+        assertEquals(IntList.of(4, 5, 6), F);
+
+        IntList G = IntList.of();
+        IntList H = IntList.of();
+        IntList exp4 = IntList.of();
+        assertEquals(exp4, IntList.dcatenate(G, H));
+        assertEquals(IntList.of(), G);
     }
 
     @Test
@@ -64,6 +82,24 @@ public class IntListTest {
         IntList exp = IntList.of(1, 2, 3, 4, 5, 6);
         assertEquals(exp, IntList.catenate(A, B));
         assertEquals(IntList.of(1, 2, 3), A);
+
+        IntList C = IntList.of(1, 2, 3);
+        IntList D = IntList.of();
+        IntList exp2 = IntList.of(1, 2, 3);
+        assertEquals(exp2, IntList.dcatenate(C, D));
+        assertEquals(IntList.of(1, 2, 3), C);
+
+        IntList E = IntList.of();
+        IntList F = IntList.of(4, 5, 6);
+        IntList exp3 = IntList.of(4, 5, 6);
+        assertEquals(exp3, IntList.dcatenate(E, F));
+        assertEquals(IntList.of(4, 5, 6), F);
+
+        IntList G = IntList.of();
+        IntList H = IntList.of();
+        IntList exp4 = IntList.of();
+        assertEquals(exp4, IntList.dcatenate(G, H));
+        assertEquals(IntList.of(), G);
     }
 
 }
