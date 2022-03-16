@@ -27,7 +27,7 @@ public class LinkedListDeque<T> {
 
     /** Create an empty LinkedListDeque */
     public LinkedListDeque() {
-        sentinel = new Node(null, sentinel, sentinel);
+        sentinel = new Node(null, null, null);
         sentinel.next = sentinel;
         sentinel.prev = sentinel;
         size = 0;
@@ -35,11 +35,26 @@ public class LinkedListDeque<T> {
 
     /** Create a LinkedListDeque with one item */
     public LinkedListDeque(T item) {
-        sentinel = new Node(null, sentinel, sentinel);
+        sentinel = new Node(null, null, null);
+        sentinel.next = sentinel;
+        sentinel.prev = sentinel;
+
         Node n = new Node(item, sentinel, sentinel);
         sentinel.next = n;
         sentinel.prev = n;
         size = 1;
+    }
+
+    /** Create a deep copy of a LinkedListDeque */
+    public LinkedListDeque(LinkedListDeque<T> other) {
+        sentinel = new Node(null, null, null);
+        sentinel.next = sentinel;
+        sentinel.prev = sentinel;
+        size = 0;
+
+        for (int i = 0; i < other.size(); i += 1) {
+            addLast(other.get(i));
+        }
     }
 
     /** Insert an item to the head of a LinkedListDeque */
@@ -84,7 +99,7 @@ public class LinkedListDeque<T> {
         return value;
     }
 
-    /** Retrieve the i-th item in a LinkedListDeque */
+    /** Retrieve the i-th item in a LinkedListDeque, using iteration */
     public T get(int i) {
         if (size == 0) {
             return null;
@@ -99,6 +114,25 @@ public class LinkedListDeque<T> {
             j += 1;
         }
         return node.item;
+    }
+
+    /** Retrieve the i-th item in a LinkedListDeque, using recursion */
+    public T getRecursive(int i) {
+        if (size == 0) {
+            return null;
+        }
+        if (i > size - 1) {
+            return null;
+        }
+        Node tmpNode = sentinel;
+        return getRecursiveHelper(i, tmpNode);
+    }
+
+    public T getRecursiveHelper(int i, Node n) {
+        if (i == 0) {
+            return n.next.item;
+        }
+        return getRecursiveHelper(i - 1, n.next);
     }
 
     /** Print out all items in a LinkedListDeque */

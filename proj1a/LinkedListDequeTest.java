@@ -134,6 +134,17 @@ public class LinkedListDequeTest {
 		valRemoved3 = lld3.removeFirst();
 		lld3.printDeque();
 		System.out.println("Size of lld3 is: " + lld3.size() + ". Removed item is: " + valRemoved3);
+
+		LinkedListDeque<String> lld4 = new LinkedListDeque<String>(lld3);
+		lld4.printDeque();
+		System.out.println("Size of lld4 is: " + lld4.size());
+		lld4.addFirst("SeiNo");
+		lld4.printDeque();
+		System.out.println("Size of lld4 is: " + lld4.size());
+		System.out.println("The 0th item of lld4 is: " + lld4.getRecursive(0));
+		System.out.println("The 1st item of lld4 is: " + lld4.getRecursive(1));
+		System.out.println("The 2nd item of lld4 is: " + lld4.getRecursive(2));
+		System.out.println("The 3rd item of lld4 is: " + lld4.getRecursive(3));
 	}
 
 	public static void main(String[] args) {
