@@ -128,7 +128,8 @@ public class LinkedListDeque<T> {
         return getRecursiveHelper(i, tmpNode);
     }
 
-    public T getRecursiveHelper(int i, Node n) {
+    /** Helper method of getRecursive() */
+    private T getRecursiveHelper(int i, Node n) {
         if (i == 0) {
             return n.next.item;
         }
